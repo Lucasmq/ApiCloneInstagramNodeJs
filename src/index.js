@@ -19,37 +19,6 @@ mongoose.connect('mongodb+srv://semana:semana@cluster0-cggxc.mongodb.net/test?re
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// // validar login
-// app.use((req,res,next) =>{
-//   const authHeader = req.headers.authorization;
-
-//   if(!authHeader){
-//     return res.status(401).send({ error: 'No token provided' });
-//   }
-
-//   const parts = authHeader.split(' ');
-
-//   if(!parts.length === 2){
-//     return res.status(401).send({ error: 'Token error' });
-//   }
-
-//   const [ scheme, token ] = parts;
-   
-//   // regex para saver se tem a palavra Bearer no token
-//   if(!/^Bearer&/i.test(scheme)){
-//     return res.status(401).send({ error: 'Token malformated '});
-//   }
-
-//   jwt.verify(token, authConfig.secret, (err, decoded) => {
-//     if(err){
-//       return res.status(401).send({ error: 'Token invalid'})
-//     }
-//     req.userId = decoded.id;
-//     next();
-//   });
-
-// });
-
 // midleware
 app.use((req, res, next) => {
   req.io = io;

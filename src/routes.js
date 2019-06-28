@@ -14,7 +14,7 @@ routes.post('/auth/register', AuthController.register);
 routes.post('/auth/autenticate', AuthController.autenticate);
 
 // middleware para validar o login, caso esteja ok, pode passar para as proximas rotas
-routes.use(authMiddleware);
+//routes.use(authMiddleware);
 
 routes.get('/posts', PostController.index);
 routes.post('/posts', upload.single('image'), PostController.store);

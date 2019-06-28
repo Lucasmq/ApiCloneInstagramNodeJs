@@ -2,12 +2,10 @@ const sharp = require('sharp');
 const path = require('path');
 const fs = require('fs');
 const Post = require('../models/Post');
-const User = require('../models/User');
 
 module.exports = {
   async index(req, res) {
-    // populate indica para popular o campo author com a sua referencia em ref
-    const posts = await Post.find().populate('author').sort('-createdAt');
+    const posts = await Post.find().sort('-createdAt');
 
     return res.json(posts);
   },
@@ -28,9 +26,9 @@ module.exports = {
       );
 
     fs.unlinkSync(req.file.path);
-        // console.log(req.user)
+
     const post = await Post.create({
-      author: req.userId,
+      author,
       place,
       description,
       hashtags,

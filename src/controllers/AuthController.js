@@ -27,7 +27,7 @@ module.exports ={
 
             res.send({ 
                 user, 
-                token : generateToken({ id: user.id , name: user.name})
+                token : generateToken({ id: user.id })
             });
         }catch (err) {
             return res.status(400).send({ error: 'Resgistration failed', err});
@@ -52,7 +52,7 @@ module.exports ={
 
         res.send({ 
             user, 
-            token : generateToken({ id: user.id , name: user.name})
+            token : generateToken({ id: user.id })
         });
     }
     

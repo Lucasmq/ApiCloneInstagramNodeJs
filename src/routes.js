@@ -4,6 +4,7 @@ const uploadConfig = require('./config/upload');
 const PostController = require('./controllers/PostController');
 const LikeController = require('./controllers/LikeController');
 const AuthController = require('./controllers/AuthController');
+const ProjectController = require('./controllers/ProjectController');
 const authMiddleware = require('./middlewares/auth');
 
 const routes = new express.Router();
@@ -17,6 +18,9 @@ routes.post('/auth/autenticate', AuthController.autenticate);
 
 routes.get('/posts', PostController.index);
 routes.post('/posts', upload.single('image'), PostController.store);
+routes.post('/projects/', ProjectController.resposta);
+
+
 
 routes.post('/posts/:id/like', LikeController.store);
 

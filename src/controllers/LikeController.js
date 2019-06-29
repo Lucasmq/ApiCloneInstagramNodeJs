@@ -1,4 +1,5 @@
 const Post = require('../models/Post');
+const User = require('../models/User');
 
 module.exports = {
   async store(req, res) {
@@ -7,6 +8,9 @@ module.exports = {
     post.likes += 1;
 
     await post.save();
+    
+    // indico os dados dos autores quando houver o like
+    post.author = await User.findById(post.author);
 
     req.io.emit('like', post);
 

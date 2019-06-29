@@ -29,7 +29,7 @@ app.use(cors());
 
 // diz ao node que quando acessar o /files, vai direto para /uploads/resized
 app.use('/files', express.static(path.resolve(__dirname, '..', 'uploads', 'resized')));
-
+// tenho que colocar o routes acima para que as imagens so sejam acessadas com o login realizado
 app.use(require('./routes'));
 
 
